@@ -7,4 +7,4 @@ title: About
 
 For more information about Not Pure Poole, please browse the [README](https://github.com/vszhub/not-pure-poole) file.
 
-我是柯展，是一位 Java 後端工程師。
+我是柯展，Java 後端工程師。
