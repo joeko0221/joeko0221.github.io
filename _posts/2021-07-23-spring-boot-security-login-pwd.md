@@ -11,7 +11,7 @@ tags:
 toc:  true
 ---
 
-spring boot security 登入加密有四種設定方式
+spring boot security 登入帳密有四種設定方式
 
 - 使用 spring boot security 預設帳密
 - 設定在 memory
@@ -34,8 +34,10 @@ dependencies {
 
 
 ## 設定在 memory
-### AuthenticationManagerBuilder
+設定在 AuthenticationManagerBuilder 或 UserDetailsService 都可以
 
+### AuthenticationManagerBuilder 
+[代碼下載](https://github.com/joeko0221/spring-boot-actuator-memory-AuthenticationManagerBuilder)
 {% highlight java linenos %}
 @Override
 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,7 +54,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 
 ### UserDetailsService
-
+[代碼下載](https://github.com/joeko0221/spring-boot-actuator-memory-UserDetailsService)
 {% highlight java linenos %}
 @Bean
 @Override
@@ -70,7 +72,7 @@ public UserDetailsService userDetailsService() {
 
 
 ## 設定在 application.yml
-
+[代碼下載](https://github.com/joeko0221/spring-boot-actuator-yml)
 {% highlight yaml linenos %}
 spring:
   security:
@@ -88,6 +90,7 @@ spring:
 
 
 ## 設定在 db
+[代碼下載](https://github.com/joeko0221/spring-boot-actuator-db)
 
     /spring-boot-actuator-db/src/main/java/me/joe/conf/SecurityConfig.java
 
