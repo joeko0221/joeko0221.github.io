@@ -11,34 +11,26 @@ tags:
 toc:  true
 ---
 
-spring boot security 登入加密有四種設定方式:
+spring boot security 登入加密有四種設定方式
 
-1. 使用 spring boot security 預設帳密
-
-2. 設定在 memory
-
-3. 設定在 application.yml
-
-4. 設定在 db
-
-
+- 使用 spring boot security 預設帳密
+- 設定在 memory
+- 設定在 application.yml
+- 設定在 db
 
 ## 使用 spring boot security 預設帳密
 
 只須載入 spring-boot-starter-security 即可，完全不用額外設定
   
 {% highlight java linenos %}
-
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
   implementation 'org.springframework.boot:spring-boot-starter-security'
 }
-
 {% endhighlight %}
 
-
-    專案啟動時，console 會出現登入密碼，預設登入帳號為 user
-
+專案啟動時，console 會出現登入密碼，預設登入帳號為 user
+![placeholder](http://placehold.it/800x400 "預設密碼")
 
 
 2. 帳密設定在記憶體 - AuthenticationManagerBuilder (不要用)
