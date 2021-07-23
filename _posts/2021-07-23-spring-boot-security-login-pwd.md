@@ -30,7 +30,7 @@ dependencies {
 {% endhighlight %}
 
 專案啟動時，console 會出現登入密碼，預設登入帳號為 user
-![placeholder](../images/spring-boot-security-pwd-default.png "預設密碼")
+![placeholder](https://joeko0221.github.io/images/spring-boot-security-pwd-default.png "預設密碼")
 
 
 2. 帳密設定在記憶體 - AuthenticationManagerBuilder (不要用)
