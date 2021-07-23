@@ -2,12 +2,14 @@
 layout: post
 author: Joe Ko
 title: Hello World
-date: 2021-07-23 12:00 +0800
-last_modified_at: 2021-07-23 12:00 +0800
+date: 2021-07-23 14:00 +0800
 categories:
 - other
 toc:  true
 ---
+
+停在港口的船是最安全的，但是，那不是造船的目的
+{: .message }
 
 從沒想過我會開始寫部落格，這是以前跟老爸的對話，
 
