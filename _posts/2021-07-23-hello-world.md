@@ -7,7 +7,6 @@ categories:
 - other
 toc:  true
 ---
-
 停在港口的船是最安全的，但是，那不是造船的目的
 {: .message }
 
