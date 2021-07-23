@@ -82,11 +82,8 @@ spring:
       roles: ADMIN,ACTRADMIN
 {% endhighlight %}
 
-    1. {} 裡面放加密方式，{noop} 代表明碼
-
-    5. bcrypt 密碼產生器
-
-        https://www.browserling.com/tools/bcrypt
+1. {} 裡面放加密方式，{noop} 就是存明碼，其餘加密方式可參考 [DelegatingPasswordEncoder](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/crypto/password/DelegatingPasswordEncoder.html)
+2. 0000 用 bcrypt 加密後的結果就是 $2a$10$JLBkYF9cXfHhYhjQFz7LbuGxJsAolSchQYS2TaCiwmRcsFgEmWVCq ([bcrypt 密碼產生器](https://www.browserling.com/tools/bcrypt))
 
 
 ## 設定在 db
