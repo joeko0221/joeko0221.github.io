@@ -71,8 +71,7 @@ public UserDetailsService userDetailsService() {
 
 ## 設定在 application.yml
 
-    /spring-boot-actuator-yml/src/main/resources/application.yml
-
+{% highlight yaml linenos %}
 spring:
   security:
     user:
@@ -81,23 +80,16 @@ spring:
 #     bcrypt 密碼: 0000
       password: "{bcrypt}$2a$10$JLBkYF9cXfHhYhjQFz7LbuGxJsAolSchQYS2TaCiwmRcsFgEmWVCq"
       roles: ADMIN,ACTRADMIN
+{% endhighlight %}
 
     1. {} 裡面放加密方式，{noop} 代表明碼
-
-    2. jasypt 與 bcrypt 不要搞混，見 spring boot - 資料庫
 
     5. bcrypt 密碼產生器
 
         https://www.browserling.com/tools/bcrypt
 
-        也可用 java 產生，見 spring boot - security 實做
 
-    6. CL 範例
-
-        https://bitbucket.org/ezecteam/ez-member-gs/src/master/
-
-
-5. 帳密設定在 db
+## 設定在 db
 
     /spring-boot-actuator-db/src/main/java/me/joe/conf/SecurityConfig.java
 
