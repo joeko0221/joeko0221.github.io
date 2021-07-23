@@ -28,15 +28,15 @@ exclude:
   - not-pure-poole.gemspec
 
 # Optimize Jekyl SEO Tag
-twitter:
-  username: vszhub
-  card: summary
+#twitter:
+#  username: vszhub
+#  card: summary
 logo: logo.png
 social:
-  name: Songzi Vong
+  name: Joe Ko
   links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
+#    - https://twitter.com/vszhub
+    - https://github.com/joeko0221
 google_site_verification: xxxxx
 lang: en
 
@@ -54,6 +54,6 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  name: Joe Ko
+  url: https://github.com/joeko0221
+  email: A125908571@gmail.com
