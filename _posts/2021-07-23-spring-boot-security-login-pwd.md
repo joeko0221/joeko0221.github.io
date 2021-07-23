@@ -33,77 +33,43 @@ dependencies {
 ![placeholder](https://joeko0221.github.io/images/spring-boot-security-pwd-default.png "預設密碼")
 
 
-2. 帳密設定在記憶體 - AuthenticationManagerBuilder (不要用)
+## 設定在 memory
+### AuthenticationManagerBuilder
 
-    /spring-boot-actuator-memory-AuthenticationManagerBuilder/src/main/java/me/joe/conf/SecurityConfig.java
-
-      @Bean
-      PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-      }
-
-      @Override
-      protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password("123")
-            .roles("ADMIN")
-            .and()
-            .withUser("user")
-            .password("123")
-            .roles("USER");
-      }    
-
-    1. NoOpPasswordEncoder 已被棄用
-
-    1. 以前的舊專案
-
-        https://bitbucket.org/joekoteam/springboot/src/securityJson/src/main/java/com/example/demo/conf/SecurityConfig.java
-
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-              auth.inMemoryAuthentication()
-                      .withUser("admin").password("123").roles("ADMIN")
-                      .and()
-                      .withUser("user").password("123").roles("USER");
-        }               
+{% highlight java linenos %}
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+  auth.inMemoryAuthentication()
+      .withUser("admin")
+      .password("123")
+      .roles("ADMIN")
+      .and()
+      .withUser("user")
+      .password("123")
+      .roles("USER");
+}    
+{% endhighlight %}
 
 
-3. 帳密設定在記憶體 - UserDetailsService (不要用)
+### UserDetailsService
 
-    /spring-boot-actuator-memory-UserDetailsService/src/main/java/me/joe/conf/SecurityConfig.java
+{% highlight java linenos %}
+@Bean
+@Override
+public UserDetailsService userDetailsService() {
 
-      @Bean
-      @Override
-      public UserDetailsService userDetailsService() {
+  UserDetails user = User.withDefaultPasswordEncoder()
+      .username("user")
+      .password("password")
+      .roles("ADMIN")
+      .build();
 
-        UserDetails user = User.withDefaultPasswordEncoder()
-            .username("user")
-            .password("password")
-            .roles("ADMIN")
-            .build();
-
-        return new InMemoryUserDetailsManager(user);
-      }
-
-    1. 以前的舊專案
-
-        https://bitbucket.org/joekoteam/springboot/src/securityWebForm/src/main/java/com/example/demo/conf/SecurityConfig.java
-
-        @Override
-        public UserDetailsService userDetailsService() {
-              UserDetails user =
-                   User.withDefaultPasswordEncoder()
-                      .username("user")
-                      .password("password")
-                      .roles("USER")
-                      .build();
-
-              return new InMemoryUserDetailsManager(user);
-        }    
+  return new InMemoryUserDetailsManager(user);
+}
+{% endhighlight %}
 
 
-4. 帳密設定在 yml
+## 設定在 application.yml
 
     /spring-boot-actuator-yml/src/main/resources/application.yml
 
