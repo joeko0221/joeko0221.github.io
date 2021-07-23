@@ -140,6 +140,6 @@ public class AuthService implements UserDetailsService {
     return userInfo;
   }
 {% endhighlight %}
-- Override loadUserByUsername，將 UserInfo 的查詢，改向資料庫
+- Override loadUserByUsername，將 UserInfo 的查詢，改指向資料庫
 
 -----
