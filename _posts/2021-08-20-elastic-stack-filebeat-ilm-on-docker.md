@@ -193,5 +193,6 @@ output.logstash:
 ![placeholder](https://joeko0221.github.io/images/ilm-policy-setting.png "ilm policy 設定")
 - kibana 左方選單 -> Stack Management -> Index Lifecycle Policies -> Create policy
 - 設定完成後，Linked Indices 數字為 1，就代表 policy 和 index 綁定完成囉
+- 每五天自動更換 index，並刪除過期 index
 
 -----
