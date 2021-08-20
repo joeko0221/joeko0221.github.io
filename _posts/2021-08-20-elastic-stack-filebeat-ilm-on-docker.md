@@ -10,15 +10,15 @@ tags:
 toc:  true
 ---
 
-網路上有非常多 elastic stack 相關文章，本文特點如下，
+網路上有非常多 elastic stack 相關文章，本文特點如下:
 
-- 使用 Docker 一鍵安裝 elastic stack
+- 使用 docker 一鍵安裝 elastic stack
 - 使用 filebeat 推送 log
 - 使用 Index Lifecycle Management 管理 index
 
 ## 使用 Docker 一鍵安裝 elastic stack
 
-[完整代碼下載](https://github.com/joeko0221/spring-bonManagerBuilder)
+[完整代碼下載](https://github.com/joeko0221/elastic-stack-filebeat-ilm-on-docker)
 
 {% highlight yaml linenos %}
 version: '2.2'
@@ -139,10 +139,13 @@ networks:
  
 {% endhighlight %}
 
-$ docker-compose up 一鍵安裝
+- elasticsearch, kibana 的設定，直接複製[官網](https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html)的範例即可
+- logstash 需掛載 volumes，覆蓋 logstash.yml, pipeline 目錄
+- filebeat 須掛載 volumes，覆蓋 filebeat.yml, logs 目錄
+- 最後 $ docker-compose up 一鍵安裝
 
 ### logstash 設定 
-[代碼下載](https://github.com/joeko0221/spring-boot-actuator-memory-AuthenticationManagerBuilder)
+[代碼下載](https://github.com/joeko0221/elastic-stack-filebeat-ilm-on-docker/blob/main/logstash/pipeline/logstash.conf)
 {% highlight config linenos %}
 input {
   beats {
@@ -167,10 +170,12 @@ output {
 }
 {% endhighlight %}
 
+- 先暫時指定 index 名稱 (index => "elastic-stack-filebeat-ilm-on-docker_index")
+- elastic stack 啟動完成，並設定 ILM policy 後，再修改為 ILM 方式
 
 
 ### filebeat 設定
-[代碼下載](https://github.com/joeko0221/spring-boot-actuator-memory-UserDetailsService)
+[代碼下載](https://github.com/joeko0221/elastic-stack-filebeat-ilm-on-docker/blob/main/filebeat/filebeat.yml)
 {% highlight yaml linenos %}
 filebeat.inputs:
 - type: log
@@ -185,9 +190,8 @@ output.logstash:
 
 
 ## 設定 ILM policy
-
-- {} 裡面放加密方式，{noop} 就是存明碼，其餘加密方式可參考 [DelegatingPasswordEncoder](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/crypto/password/DelegatingPasswordEncoder.html)
-- 0000 用 bcrypt 加密後的結果就是 $2a$10$JLBkYF9cXfHhYhjQFz7LbuGxJsAolSchQYS2TaCiwmRcsFgEmWVCq ([bcrypt 密碼產生器](https://www.browserling.com/tools/bcrypt))
-- 相同密碼，用 bcrypt 加密後的結果每次都不同
+![placeholder](https://joeko0221.github.io/images/ilm-policy-setting.png "ilm policy 設定")
+- kibana 左方選單 -> Stack Management -> Index Lifecycle Policies -> Create policy
+- 設定完成後，Linked Indices 數字為 1，就代表 policy 和 index 綁定完成囉
 
 -----
