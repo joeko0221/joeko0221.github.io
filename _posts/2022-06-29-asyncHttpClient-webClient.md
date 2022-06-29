@@ -106,7 +106,40 @@ public CompletableFuture<Intro> getIntroFuture(String prodNo, String deptDt) {
       .upYn("Y")
       .build());
 }        
-          
+
+
+    @Autowired
+    private FutureService futureService;
+  
+    @GetMapping("/get")
+    public Intro get() {
+  
+      try {
+        log.info("Start futrue");
+  
+        CompletableFuture<Intro> future1 = futureService.getIntroFuture("GRT0000004724", "20220301");
+        CompletableFuture<Intro> future2 = futureService.getIntroFuture("GRT0000004097", "20221220");
+  
+        log.info("Start get");
+  
+        Intro intro1 = future1.get();
+        Intro intro2 = future2.get();
+  
+        log.info("End get");
+  
+        return Intro.builder()
+            .prodNo(intro1.getProdNo() + ", " + intro2.getProdNo())
+            .build();
+  
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (ExecutionException e) {
+        e.printStackTrace();
+      }
+  
+      return null;
+    }
+            
 {% endhighlight %}
 
 
