@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Joe Ko
-title: k8s 安裝 (docker, containerd, cri-o)
+title: AsyncHttpClient, webClient
 date: 2022-06-29 14:20 +0800
 categories:
 - spring boot
@@ -20,6 +20,22 @@ toc:  true
   
   threadPoolTaskExecutor.execute(() -> your method);
   
+{% endhighlight %}
+
+## Future (Spring MVC)
+
+{% highlight java linenos %}
+
+Future<HsrHolidayOrderInfo> future = threadPoolTaskExecutor.submit(new Callable<HsrHolidayOrderInfo>() {
+
+    @Override
+    public HsrHolidayOrderInfo call() throws Exception {
+      ...
+    }
+});
+
+HsrHolidayOrderInfo result = future.get();   
+          
 {% endhighlight %}
 
 
