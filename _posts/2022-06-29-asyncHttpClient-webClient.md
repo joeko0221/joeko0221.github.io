@@ -10,7 +10,7 @@ tags:
 toc:  true
 ---
 
-本文將介紹 Spring MVC 中的 Thread, Future, AsyncHttpClient，在 Spring Boot 對應的寫法。
+本文將介紹 Spring MVC 中 Thread, Future, AsyncHttpClient，在 Spring Boot 對應的寫法。
 
 ## Thread (Spring MVC)
 
